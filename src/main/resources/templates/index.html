@@ -9,11 +9,13 @@
     <div class="header">
         <h1>PppDownloader</h1>
         <br><br>
-        <label for="firstDate">Choose first date</label>
-        <input type="date" id="firstDate" name="firstDate">
-        <label for="secondDate">Choose second date</label>
-        <input type="date" id="secondDate" name="secondDate">
-        <input type="submit" value="Submit">
+        <form action="#" th:action="@{/submit}" >
+            <label for="firstDate">Choose first date</label>
+            <input type="date" id="firstDate" name="firstDate">
+            <label for="secondDate">Choose second date</label>
+            <input type="date" id="secondDate" name="secondDate">
+            <input type="submit" value="Submit">
+        </form>
     </div>
     <div class="main">
 
