@@ -8,8 +8,13 @@ public class IndexController {
 
     @RequestMapping
     public String index(){
+        return "index";
+    }
 
-        return "index.html";
+    @RequestMapping("/submit")
+    public String submit(String firstDate, String secondDate){
+        System.out.printf("Request wan submitted \nFirst date = %s \nSecond date = %s\n ", firstDate, secondDate);
+        return "index";
     }
 
 }
