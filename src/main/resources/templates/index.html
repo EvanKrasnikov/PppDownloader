@@ -17,8 +17,25 @@
             <input type="submit" value="Submit">
         </form>
     </div>
+    <br><br>
     <div class="main">
-
+        <div class="table-container" th:each="element : ${elements}">
+            <table class="table">
+                <h2>${element.name}</h2>
+                <thead>
+                    <tr>
+                        <th>Count #</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each = "link : ${element.links}">
+                        <td th:utext="${link}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br><br>
+        </div>
     </div>
 </body>
 </html>
