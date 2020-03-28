@@ -1,15 +1,18 @@
 package ru.geographer29.pppdownloader.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import ru.geographer29.pppdownloader.services.DateParserService;
+import ru.geographer29.pppdownloader.services.LinkCreatorService;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
 public class IndexController {
+
+    @Autowired
+    LinkCreatorService service;
 
     @RequestMapping
     public String index(){
@@ -17,14 +20,12 @@ public class IndexController {
     }
 
     @RequestMapping("/submit")
-    public ModelAndView submit(String firstDate, String secondDate, HttpSession session){
+    public ModelAndView submit(String firstDate, String secondDate){
         System.out.printf("Request wan submitted \nFirst date = %s \nSecond date = %s\n ", firstDate, secondDate);
-
-        DateParserService dps = new DateParserService();
-        List<String> rinexes =  dps.getRinexLinks(firstDate, secondDate);
+        List<?> list = service.getLinks(firstDate, secondDate, LinkCreatorService.Params.RINEX);
 
         ModelAndView mv = new ModelAndView();
-        mv.addObject("links", rinexes);
+        mv.addObject("tables", list);
         mv.setViewName("index");
 
         return mv;

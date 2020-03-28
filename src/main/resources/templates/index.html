@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>PppDownloader</title>
-    <link rel="stylesheet" type="text/css" th:href="@{static/css/style.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
     <div class="header">
@@ -14,23 +14,25 @@
             <input type="date" id="firstDate" name="firstDate">
             <label for="secondDate">Choose second date</label>
             <input type="date" id="secondDate" name="secondDate">
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" class="boxed-btn3">
+            <br>
         </form>
     </div>
     <br><br>
     <div class="main">
-        <div class="table-container" th:each="element : ${elements}">
+        <div class="table-container" th:each="table : ${tables}">
             <table class="table">
-                <h2>${element.name}</h2>
+                <h2><span th:text="${table.name}">Table name</span></h2>
                 <thead>
                     <tr>
-                        <th>Count #</th>
+                        <th>File</th>
                         <th>Link</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each = "link : ${element.links}">
+                    <tr th:each = "link : ${table.links}">
                         <td th:utext="${link}"></td>
+                        <td><a th:href="${link}">Download</a></td>
                     </tr>
                 </tbody>
             </table>
