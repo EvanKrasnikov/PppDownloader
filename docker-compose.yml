@@ -1,0 +1,11 @@
+version: '3'
+services:
+
+  ppp_downloader:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: ppp_downloader
+    ports:
+      - 8080:8080
+    command: java -jar target/PppDownloader-0.0.1-SNAPSHOT.war
