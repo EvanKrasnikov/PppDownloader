@@ -4,8 +4,19 @@ services:
   ppp_downloader:
     build:
       context: ./
-      dockerfile: Dockerfile
+      dockerfile: PppDownloader.dockerfile
     container_name: ppp_downloader
     ports:
       - 8080:8080
-    command: java -jar target/PppDownloader-0.0.1-SNAPSHOT.war
+    network_mode: host
+    command: java -jar PppDownloader-0.0.1-SNAPSHOT.war
+
+  consul:
+    build:
+      context: ./
+      dockerfile: Consul.dockerfile
+    container_name: consul
+    ports:
+      - 8500:8500
+    network_mode: host
+    command: ./consul agent -dev -enable-script-checks -config-dir=./consul.d
