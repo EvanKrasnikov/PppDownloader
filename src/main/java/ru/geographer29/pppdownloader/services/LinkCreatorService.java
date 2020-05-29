@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -25,8 +26,11 @@ public class LinkCreatorService {
 
 
     public List<LinksTable> getLinks(String date1, String date2, Params... params) {
-        long first = tryParse("2020-03-03").getTime();
-        long second = tryParse("2020-03-06").getTime();
+        if (date1 == null || date2 == null)
+            return Collections.emptyList();
+
+        long first = tryParse(date1).getTime();
+        long second = tryParse(date2).getTime();
 
         List<String> links = new ArrayList<>();
         String link = "";
