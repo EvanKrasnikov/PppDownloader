@@ -1,19 +1,6 @@
 {
   "service": {
     "name": "ppp_downloader",
-    "port": 8080,
-
-    "checks": [
-      {
-        "name": "HTTP TCP on port 8080",
-        "service_id": "ppp_downloader",
-        "tcp": "localhost:8080",
-        "interval": "10s",
-        "timeout": "1s",
-        "success_before_passing": 3,
-        "failures_before_critical": 3
-      }
-    ]
-
+    "port": 8080
   }
 }
